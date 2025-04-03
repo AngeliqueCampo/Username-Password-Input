@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <input type="text" id="username" placeholder="Username"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button onclick="validateInput()">Submit</button>
+    </div>
+
+    <script>
+        function validateInput() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            console.log("Username:", username);
+            console.log("Password:", password);
+
+            const passValid = validPass(password);
+
+            if (passValid) {
+                alert("Welcome, " + username + "!");
+            } else {
+                alert("Password is invalid. It must be more than characters, contain uppercase and lowercase letters, and include numbers.");
+            }
+        }
+
+        function validPass(password) {
+            return /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{9,}$/.test(password);
+        }
+    </script>
+</body>
+</html>
